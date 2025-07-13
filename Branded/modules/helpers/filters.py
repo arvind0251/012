@@ -4,7 +4,10 @@ from typing import Union, List
 
 
 def commandx(commands: Union[str, List[str]]):
-    return filters.command(commands, console.COMMAND_PREFIXES)
+    # use explicit keyword so future Pyrogram changes don’t break
+    return filters.command(commands, prefixes=console.COMMAND_PREFIXES)
+
 
 def commandz(commands: Union[str, List[str]]):
-    return filters.command(commands, console.COMMAND_HANDLERS)
+    # same idea but with your secondary prefix/handler set
+    return filters.command(commands, prefixes=console.COMMAND_HANDLERS)
